@@ -38,8 +38,8 @@
             <span *ngIf="formUser.submitted && !validatePassword()" class="text-danger">* Las contraseñas no coinciden</span>
           </div>
           <div class="row">
-            <button type="submit" class="btn btn-primary m-2" [disabled]='formUser.invalid' >Registrarme</button>
-            <button type="button" class="btn btn-primary m-2" [routerLink]="['/login']">Ya tengo una cuenta</button>
+            <button type="submit" class="btn btn-primary m-2" [disabled]='formUser.invalid'><i class="fas fa-sign-in-alt"></i> Registrarme</button>
+            <button type="button" class="btn btn-primary m-2" [routerLink]="['/login']"><i class="fas fa-sign-in-alt"></i> Ya tengo una cuenta</button>
 
           </div>
         </form>
