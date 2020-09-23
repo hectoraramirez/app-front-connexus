@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+  <a class="navbar-brand text-white text-center">Registrarse</a>
+</nav>
+<div class="container tex-center">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow m-4">
+        <div class="alert alert-danger m-2" role="alert" *ngIf="mensageError !== ''">
+          <i class="fas fa-times"></i> {{mensageError}}
+        </div>
+        <form class="card-body" (ngSubmit)="registrarUsuario(formUser)" #formUser="ngForm">
+
+          <div class="form-group">
+            <span *ngIf="formUser.touched && formUser.controls['username'].errors" class="text-danger">* Proporcione un nombre de usuario</span>
+            <input type="text" class="form-control" [(ngModel)]="usuario.username" name="username" placeholder="usuario" required username>
+            <small id="emailHelpText" class="form-text text-muted">
+              * Ingrese su nombre de usuario
+            </small>
+          </div>
+
+
+          <div class="form-group">
+            <span *ngIf="formUser.touched && formUser.controls['email'].errors" class="text-danger">* Proporcione una dirección de correo valida</span>
+            <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email" placeholder="correo electronico" required email>
+            <small id="emailHelpText" class="form-text text-muted">
+              * Ingrese su correo electronico
+            </small>
+          </div>
+          <div class="form-group">
+            <span *ngIf="formUser.submitted && formUser.controls['password'].errors" class="text-error"> * Contraseña invalida</span>
+            <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password" placeholder="password" required minlength="6">
+            <small id="emailHelpText" class="form-text text-muted">
+              * La contraseña debe de contener minimo 6 caracteres
+            </small>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" [(ngModel)]="passwordRep" name="passwordRepeat" placeholder="password" required minlength="6">
+            <span *ngIf="formUser.submitted && !validatePassword()" class="text-danger">* Las contraseñas no coinciden</span>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn btn-primary m-2" [disabled]='formUser.invalid' >Registrarme</button>
+            <button type="button" class="btn btn-primary m-2" [routerLink]="['/login']">Ya tengo una cuenta</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
